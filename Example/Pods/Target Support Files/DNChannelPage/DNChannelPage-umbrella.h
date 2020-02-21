@@ -14,6 +14,7 @@
 #import "DNCPChannelPageViewDelegate.h"
 #import "DNCPChannelView.h"
 #import "DNCPPageCollectionView.h"
+#import "DNCPPageCollectionViewCell.h"
 #import "DNCPPageCollectionViewFlowLayout.h"
 #import "DNCPPageView.h"
 

@@ -12,18 +12,41 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DNCPChannelPageView;
+@protocol DNCPChannelPageViewDataSource <NSObject>
+
+@required
+- (NSArray *)itemsInChannelPageView:(DNCPChannelPageView *)channelPageView;
+
+- (UIViewController<DNCPPageChildViewControllerDelegate> *)channelPageView:(DNCPChannelPageView *)channelPageView childViewControllerForRowAtIndex:(NSInteger)index;
+
+@optional
+
+
+@end
+
+@protocol DNCPChannelPageViewDelegate <NSObject>
+
+@required
+
+@optional
+
+
+@end
+
 @interface DNCPChannelPageView : UIView
+
+@property (nonatomic, weak) id<DNCPChannelPageViewDataSource> dataSource;
+@property (nonatomic, weak) id<DNCPChannelViewDelegate> delegate;
 
 @property (nonatomic, strong) DNCPChannelView *channelView;
 @property (nonatomic, strong) DNCPPageView *pageView;
 
 @property (nonatomic, weak) UIViewController *presentedViewController;
 
-@property (nonatomic, weak) id<DNCPPageViewDataSource> pageDataSource;
+- (instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController *)viewController channelView:(DNCPChannelView *)channelView dataSource:(id<DNCPChannelPageViewDataSource>)dataSource;
 
-- (instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController *)viewController channelView:(DNCPChannelView *)channelView pageDataSource:(id<DNCPPageViewDataSource>)pageDataSource;
-
-- (instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController *)viewController channelView:(DNCPChannelView *)channelView pageView:(DNCPPageView *)pageView;
+- (instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController *)viewController channelView:(DNCPChannelView *)channelView pageView:(DNCPPageView *)pageView dataSource:(id<DNCPChannelPageViewDataSource>)dataSource;
 
 @end
 

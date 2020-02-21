@@ -12,7 +12,9 @@
 #import "DNCPChannelPageView.h"
 #import "DNCPStyleDemoAPageView.h"
 
-@interface DNCPStyleDemoAViewController ()<DNCPPageViewDataSource>
+#import "DNCPStyleDemoAPageViewController.h"
+
+@interface DNCPStyleDemoAViewController ()<DNCPChannelPageViewDataSource>
 
 @property (nonatomic, strong) NSArray *pages;
 @property (nonatomic, strong) DNCPChannelPageView *channelPageView;
@@ -34,19 +36,19 @@
     [self.view addSubview:self.channelPageView];
 }
 
-#pragma mark - DNCPPageViewDataSource
-- (NSInteger)numberOfRowsInPageView:(DNCPPageView *)pageView {
-    return self.pages.count;
+#pragma mark - DNCPChannelPageViewDataSource
+- (NSArray *)itemsInChannelPageView:(DNCPChannelPageView *)channelPageView {
+    return self.pages;
 }
 
-- (UIViewController<DNCPPageChildViewControllerDelegate> *)pageView:(DNCPPageView *)pageView childViewControllerForRowAtIndex:(NSInteger)index {
-    return nil;
+- (UIViewController<DNCPPageChildViewControllerDelegate> *)channelPageView:(DNCPChannelPageView *)channelPageView childViewControllerForRowAtIndex:(NSInteger)index {
+    return [DNCPStyleDemoAPageViewController new];
 }
 
 #pragma mark - Getter
 - (DNCPChannelPageView *)channelPageView {
     if (!_channelPageView) {
-        DNCPChannelPageView *channelPageView = [[DNCPChannelPageView alloc] initWithFrame:self.view.frame viewController:self channelView:self.channelView pageDataSource:self];
+        DNCPChannelPageView *channelPageView = [[DNCPChannelPageView alloc] initWithFrame:self.view.frame viewController:self channelView:self.channelView dataSource:self];
         _channelPageView = channelPageView;
         
     }

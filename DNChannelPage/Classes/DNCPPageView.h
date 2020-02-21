@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// pageView的数据源
 @property (nonatomic, weak) id<DNCPPageViewDataSource> dataSource;
-@property (nonatomic, weak) id<DNCPPageViewDelegate> delegaet;
+@property (nonatomic, weak) id<DNCPPageViewDelegate> delegate;
 
 @property (nonatomic, strong) DNCPPageCollectionView *pageCollectionView;
 @property (nonatomic, strong) DNCPPageCollectionViewFlowLayout *pageCollectionViewFlowLayout;

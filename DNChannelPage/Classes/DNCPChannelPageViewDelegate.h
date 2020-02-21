@@ -27,12 +27,12 @@
 
 @end
 
-@protocol DNCPChannelPageViewDelegate <NSObject>
-
-@optional;
-
-
-@end
+//@protocol DNCPChannelPageViewDelegate <NSObject>
+//
+//@optional;
+//
+//
+//@end
 
 
 

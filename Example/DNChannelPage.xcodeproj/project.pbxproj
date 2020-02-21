@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A5AEECC23FD1C2D00E3A704 /* DNCPStyleDemoAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AEECB23FD1C2D00E3A704 /* DNCPStyleDemoAViewController.m */; };
-		3A5AEECF23FD1C3500E3A704 /* DNCPStyleDemoBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AEECE23FD1C3500E3A704 /* DNCPStyleDemoBViewController.m */; };
+		3A4C1ED223FFAF11006CBF37 /* DNCPStyleDemoAPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C1ED123FFAF11006CBF37 /* DNCPStyleDemoAPageViewController.m */; };
+		3A4C1EDB23FFAF5A006CBF37 /* DNCPStyleDemoBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C1EDA23FFAF5A006CBF37 /* DNCPStyleDemoBViewController.m */; };
+		3A4C1EDE23FFAF64006CBF37 /* DNCPStyleDemoAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C1EDD23FFAF64006CBF37 /* DNCPStyleDemoAViewController.m */; };
 		3AEAA4F623FE75CE00A9713D /* DNCPStyleDemoAChannelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEAA4F523FE75CE00A9713D /* DNCPStyleDemoAChannelView.m */; };
 		3AEAA4F923FE75DE00A9713D /* DNCPStyleDemoBChannelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEAA4F823FE75DE00A9713D /* DNCPStyleDemoBChannelView.m */; };
 		3AEAA50023FE7A6F00A9713D /* DNCPStyleDemoAPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEAA4FF23FE7A6F00A9713D /* DNCPStyleDemoAPageView.m */; };
@@ -45,10 +46,12 @@
 /* Begin PBXFileReference section */
 		2C6DB1E1FAB7D2821B238E59 /* Pods-DNChannelPage_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNChannelPage_Example.debug.xcconfig"; path = "Target Support Files/Pods-DNChannelPage_Example/Pods-DNChannelPage_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		301D37FFF35EFC6576794D20 /* Pods-DNChannelPage_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNChannelPage_Example.release.xcconfig"; path = "Target Support Files/Pods-DNChannelPage_Example/Pods-DNChannelPage_Example.release.xcconfig"; sourceTree = "<group>"; };
-		3A5AEECA23FD1C2D00E3A704 /* DNCPStyleDemoAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DNCPStyleDemoAViewController.h; path = ../DNCPStyleDemoAViewController.h; sourceTree = "<group>"; };
-		3A5AEECB23FD1C2D00E3A704 /* DNCPStyleDemoAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DNCPStyleDemoAViewController.m; path = ../DNCPStyleDemoAViewController.m; sourceTree = "<group>"; };
-		3A5AEECD23FD1C3500E3A704 /* DNCPStyleDemoBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DNCPStyleDemoBViewController.h; path = ../DNCPStyleDemoBViewController.h; sourceTree = "<group>"; };
-		3A5AEECE23FD1C3500E3A704 /* DNCPStyleDemoBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DNCPStyleDemoBViewController.m; path = ../DNCPStyleDemoBViewController.m; sourceTree = "<group>"; };
+		3A4C1ED023FFAF11006CBF37 /* DNCPStyleDemoAPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNCPStyleDemoAPageViewController.h; sourceTree = "<group>"; };
+		3A4C1ED123FFAF11006CBF37 /* DNCPStyleDemoAPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNCPStyleDemoAPageViewController.m; sourceTree = "<group>"; };
+		3A4C1ED923FFAF5A006CBF37 /* DNCPStyleDemoBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNCPStyleDemoBViewController.h; sourceTree = "<group>"; };
+		3A4C1EDA23FFAF5A006CBF37 /* DNCPStyleDemoBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNCPStyleDemoBViewController.m; sourceTree = "<group>"; };
+		3A4C1EDC23FFAF64006CBF37 /* DNCPStyleDemoAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNCPStyleDemoAViewController.h; sourceTree = "<group>"; };
+		3A4C1EDD23FFAF64006CBF37 /* DNCPStyleDemoAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNCPStyleDemoAViewController.m; sourceTree = "<group>"; };
 		3AEAA4F423FE75CE00A9713D /* DNCPStyleDemoAChannelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNCPStyleDemoAChannelView.h; sourceTree = "<group>"; };
 		3AEAA4F523FE75CE00A9713D /* DNCPStyleDemoAChannelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNCPStyleDemoAChannelView.m; sourceTree = "<group>"; };
 		3AEAA4F723FE75DE00A9713D /* DNCPStyleDemoBChannelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNCPStyleDemoBChannelView.h; sourceTree = "<group>"; };
@@ -116,8 +119,10 @@
 		3AEAA4F223FE758F00A9713D /* DemoA */ = {
 			isa = PBXGroup;
 			children = (
-				3A5AEECA23FD1C2D00E3A704 /* DNCPStyleDemoAViewController.h */,
-				3A5AEECB23FD1C2D00E3A704 /* DNCPStyleDemoAViewController.m */,
+				3A4C1EDC23FFAF64006CBF37 /* DNCPStyleDemoAViewController.h */,
+				3A4C1EDD23FFAF64006CBF37 /* DNCPStyleDemoAViewController.m */,
+				3A4C1ED023FFAF11006CBF37 /* DNCPStyleDemoAPageViewController.h */,
+				3A4C1ED123FFAF11006CBF37 /* DNCPStyleDemoAPageViewController.m */,
 				3AEAA4F423FE75CE00A9713D /* DNCPStyleDemoAChannelView.h */,
 				3AEAA4F523FE75CE00A9713D /* DNCPStyleDemoAChannelView.m */,
 				3AEAA4FE23FE7A6F00A9713D /* DNCPStyleDemoAPageView.h */,
@@ -129,8 +134,8 @@
 		3AEAA4F323FE758F00A9713D /* DemoB */ = {
 			isa = PBXGroup;
 			children = (
-				3A5AEECD23FD1C3500E3A704 /* DNCPStyleDemoBViewController.h */,
-				3A5AEECE23FD1C3500E3A704 /* DNCPStyleDemoBViewController.m */,
+				3A4C1ED923FFAF5A006CBF37 /* DNCPStyleDemoBViewController.h */,
+				3A4C1EDA23FFAF5A006CBF37 /* DNCPStyleDemoBViewController.m */,
 				3AEAA4F723FE75DE00A9713D /* DNCPStyleDemoBChannelView.h */,
 				3AEAA4F823FE75DE00A9713D /* DNCPStyleDemoBChannelView.m */,
 				3AEAA50123FE7A8300A9713D /* DNCPStyleDemoBPageView.h */,
@@ -415,13 +420,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A5AEECF23FD1C3500E3A704 /* DNCPStyleDemoBViewController.m in Sources */,
+				3A4C1EDE23FFAF64006CBF37 /* DNCPStyleDemoAViewController.m in Sources */,
 				3AEAA50323FE7A8300A9713D /* DNCPStyleDemoBPageView.m in Sources */,
-				3A5AEECC23FD1C2D00E3A704 /* DNCPStyleDemoAViewController.m in Sources */,
+				3A4C1ED223FFAF11006CBF37 /* DNCPStyleDemoAPageViewController.m in Sources */,
 				3AEAA4F923FE75DE00A9713D /* DNCPStyleDemoBChannelView.m in Sources */,
 				6003F59E195388D20070C39A /* DNCPAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* DNCPViewController.m in Sources */,
 				3AEAA4F623FE75CE00A9713D /* DNCPStyleDemoAChannelView.m in Sources */,
+				3A4C1EDB23FFAF5A006CBF37 /* DNCPStyleDemoBViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				3AEAA50023FE7A6F00A9713D /* DNCPStyleDemoAPageView.m in Sources */,
 			);
