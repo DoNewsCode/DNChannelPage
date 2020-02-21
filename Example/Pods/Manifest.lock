@@ -1,0 +1,23 @@
+PODS:
+  - DNChannelPage (1.0.0.0):
+    - DNCommonKit/DNLayout
+  - DNCommonKit/DNLayout (9.9.3)
+
+DEPENDENCIES:
+  - DNChannelPage (from `../`)
+
+SPEC REPOS:
+  https://github.com/DoNewsCode/DNSpecs.git:
+    - DNCommonKit
+
+EXTERNAL SOURCES:
+  DNChannelPage:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DNChannelPage: d81e8d145a338ee430c68ecb43e6fc21012b4424
+  DNCommonKit: 582e9dde14f8b700eafa45deb169412330492d83
+
+PODFILE CHECKSUM: f1f0de5b44a07a79d5f67e2448f0716153403890
+
+COCOAPODS: 1.8.4

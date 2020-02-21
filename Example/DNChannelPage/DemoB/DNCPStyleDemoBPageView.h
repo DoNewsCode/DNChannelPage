@@ -1,0 +1,17 @@
+//
+//  DNCPStyleDemoBPageView.h
+//  DNChannelPage_Example
+//
+//  Created by Ming on 2020/2/20.
+//  Copyright © 2020 418589912@qq.com. All rights reserved.
+//
+
+#import "DNCPPageView.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface DNCPStyleDemoBPageView : DNCPPageView
+
+@end
+
+NS_ASSUME_NONNULL_END

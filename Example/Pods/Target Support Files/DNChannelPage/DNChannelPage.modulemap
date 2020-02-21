@@ -1,0 +1,6 @@
+framework module DNChannelPage {
+  umbrella header "DNChannelPage-umbrella.h"
+
+  export *
+  module * { export * }
+}

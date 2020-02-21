@@ -1,0 +1,27 @@
+{
+  "name": "DNChannelPage",
+  "version": "1.0.0.0",
+  "summary": "A short description of DNChannelPage.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/418589912@qq.com/DNChannelPage",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "418589912@qq.com": "418589912@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/418589912@qq.com/DNChannelPage.git",
+    "tag": "1.0.0.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "DNChannelPage/Classes/**/*",
+  "dependencies": {
+    "DNCommonKit/DNLayout": [
+
+    ]
+  }
+}
