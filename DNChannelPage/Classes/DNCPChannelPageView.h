@@ -48,6 +48,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController *)viewController channelView:(DNCPChannelView *)channelView pageView:(DNCPPageView *)pageView dataSource:(id<DNCPChannelPageViewDataSource>)dataSource;
 
+- (void)proceseSelectedIndex:(NSInteger)selectedIndex;
+
 @end
 
 NS_ASSUME_NONNULL_END

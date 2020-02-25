@@ -20,6 +20,9 @@
     self.view.backgroundColor = [UIColor yellowColor];
 }
 
+- (void)dealloc {
+    
+}
 /*
 #pragma mark - Navigation
 

@@ -26,11 +26,10 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
 
 @implementation DNCPPageView
 
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
-        
     }
     return self;
 }
@@ -42,8 +41,13 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
         self.backgroundColor = [UIColor redColor];
         self.dataSource = dataSource;
         [self addSubview:self.pageCollectionView];
+        [self createObserver];
     }
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

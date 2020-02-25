@@ -65,6 +65,11 @@
     self.pageView.delegate = self;
 }
 
+#pragma mark - Public Methods
+- (void)proceseSelectedIndex:(NSInteger)selectedIndex {
+    [self.channelView proceseSelectedIndex:selectedIndex];
+}
+
 #pragma mark - DNCPChannelViewDataSource
 - (NSArray *)itemsInChannelView:(DNCPChannelView *)channelView {
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(itemsInChannelPageView:)]) {
@@ -74,6 +79,9 @@
 }
 
 #pragma mark - DNCPChannelViewDelegate
+- (void)channelView:(DNCPChannelView *)channelView didSelectRowAtIndex:(NSInteger)index {
+    [self.pageView processPageContentOffset:CGPointMake(self.pageView.bounds.size.width * index, 0.0) animated:YES];
+}
 
 #pragma mark - DNCPPageViewDataSource
 - (NSInteger)numberOfRowsInPageView:(DNCPPageView *)pageView {
@@ -93,6 +101,7 @@
 #pragma mark - DNCPPageViewDelegate
 - (void)pageView:(DNCPPageView *)pageView scrollViewDidMoveFormIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress {
     [self.channelView processChannelSwitchFromIndex:formIndex toIndex:toIndex progress:progress];
+    NSLog(@"scrollViewDidMoveFormIndex:%ld toIndex:%ld progress:%f",(long)formIndex,(long)toIndex,progress);
 }
 
 - (void)pageView:(DNCPPageView *)pageView scrollViewDidEndDeceleratingAtIndex:(NSInteger)index {

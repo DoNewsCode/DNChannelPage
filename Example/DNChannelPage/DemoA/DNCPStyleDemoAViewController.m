@@ -31,6 +31,16 @@
     [self createContent];
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+
+}
+
 - (void)createContent {
     self.pages = @[@"新鲜事",@"推荐"];
     [self.view addSubview:self.channelPageView];
@@ -56,7 +66,8 @@
 #pragma mark - Getter
 - (DNCPChannelPageView *)channelPageView {
     if (!_channelPageView) {
-        DNCPChannelPageView *channelPageView = [[DNCPChannelPageView alloc] initWithFrame:CGRectMake(0, 150, self.view.bounds.size.width, self.view.bounds.size.height - 150) viewController:self channelView:self.channelView dataSource:self];
+        CGFloat height = [UIApplication sharedApplication].statusBarFrame.size.height + 44;
+        DNCPChannelPageView *channelPageView = [[DNCPChannelPageView alloc] initWithFrame:CGRectMake(0, height, self.view.bounds.size.width, self.view.bounds.size.height - height) viewController:self channelView:self.channelView dataSource:self];
         _channelPageView = channelPageView;
         
     }

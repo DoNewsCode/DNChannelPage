@@ -44,7 +44,7 @@
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(itemsInChannelView:)]) {
         self.items = [self.dataSource itemsInChannelView:self];
     }
-    if (self.items == nil) {//控制器校验
+    if (self.items == nil) {//数据校验
     NSAssert(NO, @"itemsInChannelView:不可返回为空");
     }
 }
@@ -55,15 +55,28 @@
 
 #pragma mark - Public Methods
 - (void)processChannelSwitchFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress {
-    
+    NSAssert(NO, @"请在子类重写 processChannelSwitchFromIndex:toIndex:progress ");
+}
+
+- (void)proceseSelectedIndex:(NSInteger)selectedIndex {
+    NSAssert(NO, @"请在子类重写 proceseSelectedIndex ");
 }
 
 #pragma mark - Setter Methods
 - (void)setDataSource:(id<DNCPChannelViewDataSource>)dataSource {
+    BOOL first = dataSource && _dataSource != dataSource;
     _dataSource = dataSource;
-    if (dataSource) {
+    if (first) {//保证数据在不为空不更换情况下只通过数据源填充一次
         [self createContent];
     }
+}
+
+- (void)setCurrentIndex:(NSInteger)currentIndex {
+    _currentIndex = currentIndex;
+}
+
+- (void)setPreviousIndex:(NSInteger)previousIndex {
+    _previousIndex = previousIndex;
 }
 
 #pragma mark - LazyLoad Methods
