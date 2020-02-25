@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) DNCPChannelView *channelView;
 @property (nonatomic, strong) DNCPPageView *pageView;
 
-@property (nonatomic, weak) UIViewController *presentedViewController;
+@property (nonatomic, weak) UIViewController *parentViewController;
 
 - (instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController *)viewController channelView:(DNCPChannelView *)channelView dataSource:(id<DNCPChannelPageViewDataSource>)dataSource;
 

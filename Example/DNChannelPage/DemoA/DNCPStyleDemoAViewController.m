@@ -42,13 +42,21 @@
 }
 
 - (UIViewController<DNCPPageChildViewControllerDelegate> *)channelPageView:(DNCPChannelPageView *)channelPageView childViewControllerForRowAtIndex:(NSInteger)index {
-    return [DNCPStyleDemoAPageViewController new];
+    DNCPStyleDemoAPageViewController *styleDemoAPageViewController = [DNCPStyleDemoAPageViewController new];
+    if (index == 0) {
+        styleDemoAPageViewController.view.backgroundColor = [UIColor darkGrayColor];
+    } else {
+        styleDemoAPageViewController.view.backgroundColor = [UIColor purpleColor];
+    }
+    return styleDemoAPageViewController;
 }
+
+#pragma mark - DNCPChannelPageViewDataSource
 
 #pragma mark - Getter
 - (DNCPChannelPageView *)channelPageView {
     if (!_channelPageView) {
-        DNCPChannelPageView *channelPageView = [[DNCPChannelPageView alloc] initWithFrame:self.view.frame viewController:self channelView:self.channelView dataSource:self];
+        DNCPChannelPageView *channelPageView = [[DNCPChannelPageView alloc] initWithFrame:CGRectMake(0, 150, self.view.bounds.size.width, self.view.bounds.size.height - 150) viewController:self channelView:self.channelView dataSource:self];
         _channelPageView = channelPageView;
         
     }
@@ -57,7 +65,7 @@
 
 - (DNCPStyleDemoAChannelView *)channelView {
     if (!_channelView) {
-        DNCPStyleDemoAChannelView *channelView = [[DNCPStyleDemoAChannelView alloc] init];
+        DNCPStyleDemoAChannelView *channelView = [[DNCPStyleDemoAChannelView alloc] initWithFrame:(CGRect){0.,0.,0.,0.} dataSource:nil];
         _channelView = channelView;
     }
     return _channelView;

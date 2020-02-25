@@ -91,7 +91,12 @@
 }
 
 #pragma mark - DNCPPageViewDelegate
+- (void)pageView:(DNCPPageView *)pageView scrollViewDidMoveFormIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress {
+    [self.channelView processChannelSwitchFromIndex:formIndex toIndex:toIndex progress:progress];
+}
 
-
+- (void)pageView:(DNCPPageView *)pageView scrollViewDidEndDeceleratingAtIndex:(NSInteger)index {
+    
+}
 
 @end

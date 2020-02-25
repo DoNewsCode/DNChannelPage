@@ -32,7 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 @required
 
 @optional
-
+- (void)pageView:(DNCPPageView *)pageView willDisplayPageChildViewController:(UIViewController<DNCPPageChildViewControllerDelegate> *)pageChildViewController;
+- (void)pageView:(DNCPPageView *)pageView scrollViewDidMoveFormIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;
+- (void)pageView:(DNCPPageView *)pageView scrollViewDidEndDeceleratingAtIndex:(NSInteger)index;
 
 @end
 
@@ -45,8 +47,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) DNCPPageCollectionView *pageCollectionView;
 @property (nonatomic, strong) DNCPPageCollectionViewFlowLayout *pageCollectionViewFlowLayout;
 
+/// 上一个序号
+@property (nonatomic, assign) NSInteger previousIndex;
+/// 当前序号
+@property (nonatomic, assign) NSInteger currentIndex;
+/// 上一个偏移量
+@property (nonatomic, assign) CGPoint previousContentOffset;
+
+@property (nonatomic, weak) UIViewController *parentViewController;
+@property (nonatomic, strong) UIViewController<DNCPPageChildViewControllerDelegate> *currentPageChildViewController;
 
 - (instancetype)initWithFrame:(CGRect)frame dataSource:(id<DNCPPageViewDataSource>)dataSource;
+
+- (void)processPageContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
 
 @end
 
