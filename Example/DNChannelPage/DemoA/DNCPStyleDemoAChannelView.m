@@ -33,7 +33,6 @@
 
 
 #pragma mark - Override Methods
-
 - (instancetype)initWithFrame:(CGRect)frame dataSource:(id<DNCPChannelViewDataSource> __nullable)dataSource
 {
     frame = (CGRect){0.,0.,[UIApplication sharedApplication].keyWindow.bounds.size.width,50};
