@@ -118,7 +118,7 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
     NSInteger tempIndex = tempProgress;
     
     CGFloat progress = tempProgress - floor(tempProgress);
-    NSInteger deltaX = scrollView.contentOffset.x - self.previousIndex;
+    NSInteger deltaX = scrollView.contentOffset.x - self.previousContentOffset.x;
     if (deltaX > 0) { //向右➡️
         if (progress == 0.0) return;
         

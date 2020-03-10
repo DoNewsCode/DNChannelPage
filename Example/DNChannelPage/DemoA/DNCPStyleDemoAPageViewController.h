@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DNCPStyleDemoAPageViewController : UIViewController<DNCPPageChildViewControllerDelegate>
 
+@property (nonatomic, copy) NSString *channelName;
+
 @end
 
 NS_ASSUME_NONNULL_END

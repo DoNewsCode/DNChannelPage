@@ -21,7 +21,7 @@
 }
 
 - (void)dealloc {
-    
+    NSLog(@"dealloc---DNCPStyleDemoAPageViewController---ChannelName=%@;",self.channelName);
 }
 /*
 #pragma mark - Navigation

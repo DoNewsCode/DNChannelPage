@@ -53,6 +53,7 @@
 
 - (UIViewController<DNCPPageChildViewControllerDelegate> *)channelPageView:(DNCPChannelPageView *)channelPageView childViewControllerForRowAtIndex:(NSInteger)index {
     DNCPStyleDemoAPageViewController *styleDemoAPageViewController = [DNCPStyleDemoAPageViewController new];
+    styleDemoAPageViewController.channelName = self.pages[index];
     if (index == 0) {
         styleDemoAPageViewController.view.backgroundColor = [UIColor darkGrayColor];
     } else {
