@@ -44,6 +44,18 @@
 - (void)createContent {
     self.pages = @[@"新鲜事",@"推荐"];
     [self.view addSubview:self.channelPageView];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"回首页" forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor grayColor];
+    button.frame = (CGRect){100,200.,80.,50.};
+    [button addTarget:self action:@selector(eventTouchUpInsideForButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+}
+
+- (void)eventTouchUpInsideForButton:(UIButton *)button {
+    [self.channelPageView proceseSelectedIndex:0];
+    
 }
 
 #pragma mark - DNCPChannelPageViewDataSource

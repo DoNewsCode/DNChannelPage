@@ -115,7 +115,8 @@
 }
 
 - (void)pageView:(DNCPPageView *)pageView scrollViewDidEndDeceleratingAtIndex:(NSInteger)index {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(channelPageView:didSelectRowAtIndex:)]) {
+    self.channelView.currentIndex = index;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(channelPageView:didEndDeceleratingBecomeDisplayAtIndex:viewController:)]) {
         [self.delegate channelPageView:self didEndDeceleratingBecomeDisplayAtIndex:index viewController:self.pageView.currentPageChildViewController];
     }
 }

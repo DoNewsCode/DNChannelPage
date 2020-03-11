@@ -150,6 +150,7 @@
 }
 
 - (void)proceseSelectedIndex:(NSInteger)selectedIndex {
+    [self setSelectedIndex:selectedIndex animated:YES];
     if (self.delegate && [self.delegate respondsToSelector:@selector(channelView:didSelectRowAtIndex:)]) {
         [self.delegate channelView:self didSelectRowAtIndex:selectedIndex];
        }
@@ -216,10 +217,13 @@
 
 - (void)eventBackgroundClick:(UIGestureRecognizer *)gestureRecognizer {
     CGPoint point = [gestureRecognizer locationInView:self];
-    NSInteger index = point.x / (self.ct_width / self.channelViews.count);
+    UIView *lastView = self.channelViews.lastObject;
+    CGFloat width = CGRectGetMaxX(lastView.frame);
+    NSInteger index = point.x / (width / self.channelViews.count);
     if (index < self.channelViews.count) {
         self.currentIndex = index;
     }
+    [self adjustUIWhenBtttonClickWithAnimate:YES taped:YES];
 }
 
 #pragma mark - Public Methods
