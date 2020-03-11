@@ -70,6 +70,13 @@
     [self.channelView proceseSelectedIndex:selectedIndex];
 }
 
+- (__kindof UIViewController<DNCPPageChildViewControllerDelegate> *)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index {
+    if (self.pageView) {
+        return [self.pageView dequeueReusableCellWithReuseIdentifier:identifier forIndex:index];
+    }
+    return nil;
+}
+
 #pragma mark - DNCPChannelViewDataSource
 - (NSArray *)itemsInChannelView:(DNCPChannelView *)channelView {
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(itemsInChannelPageView:)]) {
@@ -81,6 +88,9 @@
 #pragma mark - DNCPChannelViewDelegate
 - (void)channelView:(DNCPChannelView *)channelView didSelectRowAtIndex:(NSInteger)index {
     [self.pageView processPageContentOffset:CGPointMake(self.pageView.bounds.size.width * index, 0.0) animated:YES];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(channelPageView:didSelectRowAtIndex:)]) {
+        [self.delegate channelPageView:self didSelectRowAtIndex:index];
+    }
 }
 
 #pragma mark - DNCPPageViewDataSource
@@ -105,7 +115,15 @@
 }
 
 - (void)pageView:(DNCPPageView *)pageView scrollViewDidEndDeceleratingAtIndex:(NSInteger)index {
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(channelPageView:didSelectRowAtIndex:)]) {
+        [self.delegate channelPageView:self didEndDeceleratingBecomeDisplayAtIndex:index viewController:self.pageView.currentPageChildViewController];
+    }
+}
+
+- (void)pageView:(DNCPPageView *)pageView willDisplayPageChildViewController:(UIViewController<DNCPPageChildViewControllerDelegate> *)pageChildViewController {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(channelPageView:willDisplayPageChildViewController:)]) {
+           [self.delegate channelPageView:self willDisplayPageChildViewController:pageChildViewController];
+       }
 }
 
 @end

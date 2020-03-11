@@ -55,11 +55,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGPoint previousContentOffset;
 
 @property (nonatomic, weak) UIViewController *parentViewController;
-@property (nonatomic, strong) UIViewController<DNCPPageChildViewControllerDelegate> *currentPageChildViewController;
+@property (nonatomic, strong) UIViewController<DNCPPageChildViewControllerDelegate> *__nullable currentPageChildViewController;
 
 - (instancetype)initWithFrame:(CGRect)frame dataSource:(id<DNCPPageViewDataSource>)dataSource;
 
 - (void)processPageContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
+
+- (__kindof UIViewController<DNCPPageChildViewControllerDelegate> *)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index;
 
 @end
 

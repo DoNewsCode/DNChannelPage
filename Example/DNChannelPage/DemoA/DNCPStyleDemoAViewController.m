@@ -14,7 +14,7 @@
 
 #import "DNCPStyleDemoAPageViewController.h"
 
-@interface DNCPStyleDemoAViewController ()<DNCPChannelPageViewDataSource>
+@interface DNCPStyleDemoAViewController ()<DNCPChannelPageViewDataSource,DNCPChannelPageViewDelegate>
 
 @property (nonatomic, strong) NSArray *pages;
 @property (nonatomic, strong) DNCPChannelPageView *channelPageView;
@@ -38,7 +38,7 @@
 }
 
 - (void)dealloc {
-
+    
 }
 
 - (void)createContent {
@@ -52,23 +52,41 @@
 }
 
 - (UIViewController<DNCPPageChildViewControllerDelegate> *)channelPageView:(DNCPChannelPageView *)channelPageView childViewControllerForRowAtIndex:(NSInteger)index {
-    DNCPStyleDemoAPageViewController *styleDemoAPageViewController = [DNCPStyleDemoAPageViewController new];
-    styleDemoAPageViewController.channelName = self.pages[index];
-    if (index == 0) {
-        styleDemoAPageViewController.view.backgroundColor = [UIColor darkGrayColor];
-    } else {
-        styleDemoAPageViewController.view.backgroundColor = [UIColor purpleColor];
+    DNCPStyleDemoAPageViewController *styleDemoAPageViewController = [channelPageView dequeueReusableCellWithReuseIdentifier:@"viewController" forIndex:index];
+    if (styleDemoAPageViewController == nil) {
+        styleDemoAPageViewController = [DNCPStyleDemoAPageViewController new];
+        styleDemoAPageViewController.channelName = self.pages[index];
+        if (index == 0) {
+            styleDemoAPageViewController.view.backgroundColor = [UIColor darkGrayColor];
+        } else {
+            styleDemoAPageViewController.view.backgroundColor = [UIColor purpleColor];
+        }
     }
+    
+    
+    NSLog(@"childViewControllerForRowAtIndex == %ld",(long)index);
     return styleDemoAPageViewController;
 }
 
-#pragma mark - DNCPChannelPageViewDataSource
+#pragma mark - DNCPChannelPageViewDelegate
+- (void)channelPageView:(DNCPChannelPageView *)channelPageView didSelectRowAtIndex:(NSInteger)index {
+    NSLog(@"didSelectRowAtIndex == %ld",(long)index);
+}
+
+- (void)channelPageView:(DNCPChannelPageView *)channelPageView willDisplayPageChildViewController:(UIViewController<DNCPPageChildViewControllerDelegate> *)pageChildViewController {
+    NSLog(@"willDisplayPageChildViewController");
+}
+
+- (void)channelPageView:(DNCPChannelPageView *)channelPageView didEndDeceleratingBecomeDisplayAtIndex:(NSInteger)index viewController:(UIViewController<DNCPPageChildViewControllerDelegate> *)viewController {
+    NSLog(@"didEndDeceleratingBecomeDisplayAtIndex==%ld",(long)index);
+}
 
 #pragma mark - Getter
 - (DNCPChannelPageView *)channelPageView {
     if (!_channelPageView) {
         CGFloat height = [UIApplication sharedApplication].statusBarFrame.size.height + 44;
         DNCPChannelPageView *channelPageView = [[DNCPChannelPageView alloc] initWithFrame:CGRectMake(0, height, self.view.bounds.size.width, self.view.bounds.size.height - height) viewController:self channelView:self.channelView dataSource:self];
+        channelPageView.delegate = self;
         _channelPageView = channelPageView;
         
     }

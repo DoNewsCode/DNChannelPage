@@ -107,6 +107,10 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
     
 }
 
+- (__kindof UIViewController<DNCPPageChildViewControllerDelegate> *)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index {
+    return [self.pageChildViewControllerDictionary valueForKey:[NSString stringWithFormat:@"%ld",(long)index]];
+}
+
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {//开始滚动
     if (self.forbidTouchToAdjustPosition || // 点击标题滚动
@@ -139,17 +143,17 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {//将要开始拖拽
-     // 在将要开始拖拽时重置触摸交互标记并设置previousIndex
+    // 在将要开始拖拽时重置触摸交互标记并设置previousIndex
     self.previousIndex = scrollView.contentOffset.x / self.bounds.size.width;
     self.forbidTouchToAdjustPosition = NO;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {//已经停止拖拽
-//   UINavigationController *navigationController = (UINavigationController *)self.parentViewController.parentViewController;
-//   if ([navigationController isKindOfClass:[UINavigationController class]] &&
-//       navigationController.interactivePopGestureRecognizer) {
-//       navigationController.interactivePopGestureRecognizer.enabled = YES;
-//   }
+    //   UINavigationController *navigationController = (UINavigationController *)self.parentViewController.parentViewController;
+    //   if ([navigationController isKindOfClass:[UINavigationController class]] &&
+    //       navigationController.interactivePopGestureRecognizer) {
+    //       navigationController.interactivePopGestureRecognizer.enabled = YES;
+    //   }
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {//开始减速
@@ -158,9 +162,9 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {//停止减速
     NSInteger currentIndex = (scrollView.contentOffset.x / self.bounds.size.width);
-       if (self.delegate && [self.delegate respondsToSelector:@selector(pageView:scrollViewDidEndDeceleratingAtIndex:)]) {
-              [self.delegate pageView:self scrollViewDidEndDeceleratingAtIndex:currentIndex];
-          }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pageView:scrollViewDidEndDeceleratingAtIndex:)]) {
+        [self.delegate pageView:self scrollViewDidEndDeceleratingAtIndex:currentIndex];
+    }
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -201,29 +205,31 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
     if (self.dataSource == nil || [self.dataSource respondsToSelector:@selector(pageView:childViewControllerForRowAtIndex:)] == NO) {//数据源校验
         NSAssert(NO, @"必须设置数据源并实现实现数据源方法");
     }
-    self.currentPageChildViewController = [self.pageChildViewControllerDictionary valueForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
-    if (self.currentPageChildViewController == nil) {
-        UIViewController<DNCPPageChildViewControllerDelegate> *currentPageChildViewController = [self.dataSource pageView:self childViewControllerForRowAtIndex:indexPath.row];
-        
-        if (currentPageChildViewController == nil) {//控制器校验
-            NSAssert(NO, @"pageView:childViewControllerForRowAtIndex:不可返回为空");
-            if ([currentPageChildViewController conformsToProtocol:@protocol(DNCPPageChildViewControllerDelegate)] == NO) {
-                NSAssert(NO, @"子控制器必须遵守DNCPPageChildViewControllerDelegate协议");
-            }
-            // 这里建立子控制器和父控制器的关系
-            if ([currentPageChildViewController isKindOfClass:[UINavigationController class]]) {
-                NSAssert(NO, @"不要添加UINavigationController包装后的子控制器");
-            }
+    self.currentPageChildViewController = nil;
+    UIViewController<DNCPPageChildViewControllerDelegate> *currentPageChildViewController = [self.dataSource pageView:self childViewControllerForRowAtIndex:indexPath.row];
+    
+    if (currentPageChildViewController == nil) {//控制器校验
+        NSAssert(NO, @"pageView:childViewControllerForRowAtIndex:不可返回为空");
+        if ([currentPageChildViewController conformsToProtocol:@protocol(DNCPPageChildViewControllerDelegate)] == NO) {
+            NSAssert(NO, @"子控制器必须遵守DNCPPageChildViewControllerDelegate协议");
+        }
+        // 这里建立子控制器和父控制器的关系
+        if ([currentPageChildViewController isKindOfClass:[UINavigationController class]]) {
+            NSAssert(NO, @"不要添加UINavigationController包装后的子控制器");
         }
         
-        self.currentPageChildViewController = currentPageChildViewController;
+    }
+    self.currentPageChildViewController = currentPageChildViewController;
+    if (self.currentPageChildViewController != [self.pageChildViewControllerDictionary valueForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]) {
         [self.pageChildViewControllerDictionary setValue:self.currentPageChildViewController forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
         
+    }
+    if ([self.parentViewController.childViewControllers containsObject:self.currentPageChildViewController] == NO) {
         [self.parentViewController addChildViewController:self.currentPageChildViewController];
         self.currentPageChildViewController.view.frame = self.bounds;
-        // TODO 控制器index和控制器扩展方法 @implementation UIViewController (DNPageController) mm_scrollViewController
-        
     }
+    
+    // TODO 控制器index和控制器扩展方法 @implementation UIViewController (DNPageController) mm_scrollViewController
     // 通知代理
     if (self.delegate && [self.delegate respondsToSelector:@selector(pageView:willDisplayPageChildViewController:)]) {
         [self.delegate pageView:self willDisplayPageChildViewController:self.currentPageChildViewController];

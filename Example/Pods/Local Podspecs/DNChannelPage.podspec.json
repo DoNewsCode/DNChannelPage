@@ -1,9 +1,9 @@
 {
   "name": "DNChannelPage",
-  "version": "1.0.0.0",
+  "version": "1.0.0.2",
   "summary": "A short description of DNChannelPage.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/418589912@qq.com/DNChannelPage",
+  "homepage": "https://github.com/DoNewsCode/DNChannelPage",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,8 +12,8 @@
     "418589912@qq.com": "418589912@qq.com"
   },
   "source": {
-    "git": "https://github.com/418589912@qq.com/DNChannelPage.git",
-    "tag": "1.0.0.0"
+    "git": "https://github.com/DoNewsCode/DNChannelPage.git",
+    "tag": "1.0.0.2"
   },
   "platforms": {
     "ios": "9.0"

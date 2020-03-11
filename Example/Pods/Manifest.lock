@@ -1,5 +1,5 @@
 PODS:
-  - DNChannelPage (1.0.0.0):
+  - DNChannelPage (1.0.0.2):
     - DNCommonKit/DNLayout
   - DNCommonKit/DNLayout (9.9.3)
 
@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DNChannelPage: d81e8d145a338ee430c68ecb43e6fc21012b4424
+  DNChannelPage: b29fbc5eb129b8b2fe19f4b4a7be262aaf80ca31
   DNCommonKit: 582e9dde14f8b700eafa45deb169412330492d83
 
 PODFILE CHECKSUM: f1f0de5b44a07a79d5f67e2448f0716153403890
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.0

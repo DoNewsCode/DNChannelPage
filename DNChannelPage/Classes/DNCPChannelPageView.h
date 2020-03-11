@@ -30,14 +30,18 @@ NS_ASSUME_NONNULL_BEGIN
 @required
 
 @optional
+- (void)channelPageView:(DNCPChannelPageView *)channelPageView didSelectRowAtIndex:(NSInteger)index;
 
+- (void)channelPageView:(DNCPChannelPageView *)channelPageView willDisplayPageChildViewController:(UIViewController<DNCPPageChildViewControllerDelegate> *)pageChildViewController;
+
+- (void)channelPageView:(DNCPChannelPageView *)channelPageView didEndDeceleratingBecomeDisplayAtIndex:(NSInteger)index viewController:(UIViewController<DNCPPageChildViewControllerDelegate> *)viewController;
 
 @end
 
 @interface DNCPChannelPageView : UIView
 
 @property (nonatomic, weak) id<DNCPChannelPageViewDataSource> dataSource;
-@property (nonatomic, weak) id<DNCPChannelViewDelegate> delegate;
+@property (nonatomic, weak) id<DNCPChannelPageViewDelegate> delegate;
 
 @property (nonatomic, strong) DNCPChannelView *channelView;
 @property (nonatomic, strong) DNCPPageView *pageView;
@@ -49,6 +53,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController *)viewController channelView:(DNCPChannelView *)channelView pageView:(DNCPPageView *)pageView dataSource:(id<DNCPChannelPageViewDataSource>)dataSource;
 
 - (void)proceseSelectedIndex:(NSInteger)selectedIndex;
+
+- (__kindof UIViewController<DNCPPageChildViewControllerDelegate> *)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index;
 
 @end
 
