@@ -127,4 +127,11 @@
        }
 }
 
+- (void)setParentViewController:(UIViewController *)parentViewController {
+    _parentViewController = parentViewController;
+    if (self.pageView) {
+        self.pageView.parentViewController = parentViewController;
+    }
+}
+
 @end

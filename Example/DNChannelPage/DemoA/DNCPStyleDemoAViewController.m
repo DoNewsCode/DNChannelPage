@@ -93,11 +93,15 @@
     NSLog(@"didEndDeceleratingBecomeDisplayAtIndex==%ld",(long)index);
 }
 
+#pragma mark - Setter
+
+
 #pragma mark - Getter
 - (DNCPChannelPageView *)channelPageView {
     if (!_channelPageView) {
         CGFloat height = [UIApplication sharedApplication].statusBarFrame.size.height + 44;
         DNCPChannelPageView *channelPageView = [[DNCPChannelPageView alloc] initWithFrame:CGRectMake(0, height, self.view.bounds.size.width, self.view.bounds.size.height - height) viewController:self channelView:self.channelView dataSource:self];
+        channelPageView.parentViewController = self;
         channelPageView.delegate = self;
         _channelPageView = channelPageView;
         

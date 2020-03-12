@@ -20,6 +20,10 @@
     self.view.backgroundColor = [UIColor yellowColor];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSLog(@"self.navigationController = %@",self.navigationController);
+}
 - (void)dealloc {
     NSLog(@"dealloc---DNCPStyleDemoAPageViewController---ChannelName=%@;",self.channelName);
 }
