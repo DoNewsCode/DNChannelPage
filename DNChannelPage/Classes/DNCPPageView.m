@@ -262,6 +262,36 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
 }
 
 #pragma mark - LazyLoad Methods
+- (void)setParentViewController:(UIViewController *)parentViewController {
+    _parentViewController = parentViewController;
+    UINavigationController *navi = (UINavigationController *)self.parentViewController.parentViewController;
+    
+    if ([navi isKindOfClass:[UINavigationController class]]) {
+        if (navi.viewControllers.count == 1) return;
+        
+        if (navi.interactivePopGestureRecognizer) {
+            
+            __weak typeof(self) weakSelf = self;
+            [self.pageCollectionView returnScrollViewShouldBeginPanGestureHandler:^BOOL(DNCPPageCollectionView * _Nonnull collectionView, UIPanGestureRecognizer * _Nonnull panGesture) {
+                CGFloat transionX = [panGesture translationInView:panGesture.view].x;
+                               if (collectionView.contentOffset.x == 0 && transionX > 0) {
+                                   navi.interactivePopGestureRecognizer.enabled = YES;
+                               } else {
+                                   navi.interactivePopGestureRecognizer.enabled = NO;
+                               
+                               }
+                               
+                               if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(pageView:scrollPageController:contentScrollView:shouldBeginPanGesture:)]) {
+                                   return [weakSelf.delegate pageView:self scrollPageController:weakSelf.parentViewController contentScrollView:weakSelf.pageCollectionView shouldBeginPanGesture:panGesture];
+                               } else {
+                                   return YES;
+                               }
+            }];
+            
+        }
+    }
+}
+
 - (DNCPPageCollectionView *)pageCollectionView {
     if (!_pageCollectionView) {
         DNCPPageCollectionView *pageCollectionView = [[DNCPPageCollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.pageCollectionViewFlowLayout];

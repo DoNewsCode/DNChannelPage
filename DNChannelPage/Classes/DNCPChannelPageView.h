@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)channelPageView:(DNCPChannelPageView *)channelPageView willDisplayPageChildViewController:(UIViewController<DNCPPageChildViewControllerDelegate> *)pageChildViewController;
 
 - (void)channelPageView:(DNCPChannelPageView *)channelPageView didEndDeceleratingBecomeDisplayAtIndex:(NSInteger)index viewController:(UIViewController<DNCPPageChildViewControllerDelegate> *)viewController;
+- (BOOL)channelPageView:(DNCPChannelPageView *)channelPageView scrollPageController:(UIViewController *)scrollPageController contentScrollView:(DNCPPageCollectionView *)scrollView shouldBeginPanGesture:(UIPanGestureRecognizer *)panGesture;
 
 @end
 

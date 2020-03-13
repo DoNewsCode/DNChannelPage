@@ -127,6 +127,13 @@
        }
 }
 
+- (BOOL)pageView:(DNCPPageView *)pageView scrollPageController:(UIViewController *)scrollPageController contentScrollView:(DNCPPageCollectionView *)scrollView shouldBeginPanGesture:(UIPanGestureRecognizer *)panGesture {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(channelPageView:scrollPageController:contentScrollView:shouldBeginPanGesture:)]) {
+        return [self.delegate channelPageView:self scrollPageController:scrollPageController contentScrollView:scrollView shouldBeginPanGesture:panGesture];
+    }
+    return YES;
+}
+
 - (void)setParentViewController:(UIViewController *)parentViewController {
     _parentViewController = parentViewController;
     if (self.pageView) {

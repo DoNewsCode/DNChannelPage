@@ -9,7 +9,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DNCPPageCollectionView;
+typedef BOOL(^DNCPPageCollectionViewShouldBeginPanGestureHandler)(DNCPPageCollectionView *collectionView, UIPanGestureRecognizer *panGesture);
+
 @interface DNCPPageCollectionView : UICollectionView
+
+
+- (void)returnScrollViewShouldBeginPanGestureHandler:(DNCPPageCollectionViewShouldBeginPanGestureHandler)gestureBeginHandler;
+
 
 @end
 
