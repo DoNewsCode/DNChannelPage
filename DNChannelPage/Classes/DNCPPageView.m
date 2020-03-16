@@ -38,7 +38,6 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor redColor];
         self.dataSource = dataSource;
         [self addSubview:self.pageCollectionView];
         [self createObserver];
