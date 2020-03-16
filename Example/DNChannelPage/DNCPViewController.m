@@ -9,7 +9,7 @@
 #import "DNCPViewController.h"
 #import "DNCPStyleDemoBViewController.h"
 #import "DNCPStyleDemoAViewController.h"
-
+#import "DNCPStyleDemoCViewController.h"
 
 static NSString *cellIdentifier = @"DNCPViewControllerCell";
 
@@ -29,7 +29,7 @@ static NSString *cellIdentifier = @"DNCPViewControllerCell";
 	// Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"DNChannelPage";
-    self.pages = @[@"Page:StyleDemoA",@"Page:StyleDemoB"];
+    self.pages = @[@"Page:StyleDemoA",@"Page:StyleDemoB",@"Page:StyleDemoC"];
     [self createContent];
 }
 
@@ -81,7 +81,7 @@ static NSString *cellIdentifier = @"DNCPViewControllerCell";
     } else if (indexPath.row == 1) {
         [self.navigationController pushViewController:[DNCPStyleDemoBViewController new] animated:YES];
     } else if (indexPath.row == 2) {
-        [self.navigationController pushViewController:[DNCPStyleDemoAViewController new] animated:YES];
+        [self.navigationController pushViewController:[DNCPStyleDemoCViewController new] animated:YES];
     } else if (indexPath.row == 3) {
         [self.navigationController pushViewController:[DNCPStyleDemoAViewController new] animated:YES];
     }

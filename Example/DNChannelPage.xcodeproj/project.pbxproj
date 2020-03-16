@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A314698241F541500F15B2F /* DNCPStyleDemoCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A314697241F541500F15B2F /* DNCPStyleDemoCViewController.m */; };
+		3A31469B241F5D8900F15B2F /* DNCPStyleATableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31469A241F5D8900F15B2F /* DNCPStyleATableView.m */; };
 		3A34C6FB2403DB0400F0F861 /* DNCPStyleDemoAChannelItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A34C6FA2403DB0400F0F861 /* DNCPStyleDemoAChannelItemView.m */; };
 		3A4C1ED223FFAF11006CBF37 /* DNCPStyleDemoAPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C1ED123FFAF11006CBF37 /* DNCPStyleDemoAPageViewController.m */; };
 		3A4C1EDB23FFAF5A006CBF37 /* DNCPStyleDemoBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C1EDA23FFAF5A006CBF37 /* DNCPStyleDemoBViewController.m */; };
@@ -47,6 +49,10 @@
 /* Begin PBXFileReference section */
 		2C6DB1E1FAB7D2821B238E59 /* Pods-DNChannelPage_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNChannelPage_Example.debug.xcconfig"; path = "Target Support Files/Pods-DNChannelPage_Example/Pods-DNChannelPage_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		301D37FFF35EFC6576794D20 /* Pods-DNChannelPage_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNChannelPage_Example.release.xcconfig"; path = "Target Support Files/Pods-DNChannelPage_Example/Pods-DNChannelPage_Example.release.xcconfig"; sourceTree = "<group>"; };
+		3A314696241F541500F15B2F /* DNCPStyleDemoCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNCPStyleDemoCViewController.h; sourceTree = "<group>"; };
+		3A314697241F541500F15B2F /* DNCPStyleDemoCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNCPStyleDemoCViewController.m; sourceTree = "<group>"; };
+		3A314699241F5D8900F15B2F /* DNCPStyleATableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNCPStyleATableView.h; sourceTree = "<group>"; };
+		3A31469A241F5D8900F15B2F /* DNCPStyleATableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNCPStyleATableView.m; sourceTree = "<group>"; };
 		3A34C6F92403DB0400F0F861 /* DNCPStyleDemoAChannelItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNCPStyleDemoAChannelItemView.h; sourceTree = "<group>"; };
 		3A34C6FA2403DB0400F0F861 /* DNCPStyleDemoAChannelItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNCPStyleDemoAChannelItemView.m; sourceTree = "<group>"; };
 		3A4C1ED023FFAF11006CBF37 /* DNCPStyleDemoAPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNCPStyleDemoAPageViewController.h; sourceTree = "<group>"; };
@@ -119,6 +125,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A314695241F53EE00F15B2F /* DemoC */ = {
+			isa = PBXGroup;
+			children = (
+				3A314696241F541500F15B2F /* DNCPStyleDemoCViewController.h */,
+				3A314697241F541500F15B2F /* DNCPStyleDemoCViewController.m */,
+			);
+			path = DemoC;
+			sourceTree = "<group>";
+		};
 		3AEAA4F223FE758F00A9713D /* DemoA */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +141,8 @@
 				3A4C1EDD23FFAF64006CBF37 /* DNCPStyleDemoAViewController.m */,
 				3A4C1ED023FFAF11006CBF37 /* DNCPStyleDemoAPageViewController.h */,
 				3A4C1ED123FFAF11006CBF37 /* DNCPStyleDemoAPageViewController.m */,
+				3A314699241F5D8900F15B2F /* DNCPStyleATableView.h */,
+				3A31469A241F5D8900F15B2F /* DNCPStyleATableView.m */,
 				3AEAA4F423FE75CE00A9713D /* DNCPStyleDemoAChannelView.h */,
 				3AEAA4F523FE75CE00A9713D /* DNCPStyleDemoAChannelView.m */,
 				3A34C6F92403DB0400F0F861 /* DNCPStyleDemoAChannelItemView.h */,
@@ -204,6 +221,7 @@
 				6003F5A6195388D20070C39A /* DNCPViewController.m */,
 				3AEAA4F223FE758F00A9713D /* DemoA */,
 				3AEAA4F323FE758F00A9713D /* DemoB */,
+				3A314695241F53EE00F15B2F /* DemoC */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -427,6 +445,8 @@
 			files = (
 				3A4C1EDE23FFAF64006CBF37 /* DNCPStyleDemoAViewController.m in Sources */,
 				3AEAA50323FE7A8300A9713D /* DNCPStyleDemoBPageView.m in Sources */,
+				3A314698241F541500F15B2F /* DNCPStyleDemoCViewController.m in Sources */,
+				3A31469B241F5D8900F15B2F /* DNCPStyleATableView.m in Sources */,
 				3A4C1ED223FFAF11006CBF37 /* DNCPStyleDemoAPageViewController.m in Sources */,
 				3AEAA4F923FE75DE00A9713D /* DNCPStyleDemoBChannelView.m in Sources */,
 				6003F59E195388D20070C39A /* DNCPAppDelegate.m in Sources */,
