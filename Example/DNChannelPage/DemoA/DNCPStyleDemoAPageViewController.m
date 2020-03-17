@@ -38,6 +38,7 @@ static NSString *cellIdentifier = @"DNCPStyleDemoAPageViewControllerCell";
     [super viewDidAppear:animated];
     NSLog(@"self.navigationController = %@",self.navigationController);
 }
+
 - (void)dealloc {
     NSLog(@"dealloc---DNCPStyleDemoAPageViewController---ChannelName=%@;",self.channelName);
 }
@@ -72,8 +73,7 @@ static NSString *cellIdentifier = @"DNCPStyleDemoAPageViewControllerCell";
     return cell;
 }
 
-
-
+#pragma mark - Getter
 - (DNCPStyleATableView *)tableView {
     if (!_tableView) {
         DNCPStyleATableView *tableView = [[DNCPStyleATableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
