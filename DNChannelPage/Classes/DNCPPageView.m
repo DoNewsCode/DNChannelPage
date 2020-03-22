@@ -52,7 +52,7 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
 
 - (void)createObserver {
     //监听内存警告
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processDidReceiveMemoryWarningNotification:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processDidReceiveMemoryWarningNotification:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     
 }
 
