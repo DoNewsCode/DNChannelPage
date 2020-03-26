@@ -34,8 +34,15 @@ static NSString *cellIdentifier = @"DNCPStyleDemoAPageViewControllerCell";
     [self.view addSubview:self.tableView];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NSLog(@"viewWillAppear---DNCPStyleDemoAPageViewController---%@",self.channelName);
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    NSLog(@"viewDidAppear---DNCPStyleDemoAPageViewController---%@",self.channelName);
     NSLog(@"self.navigationController = %@",self.navigationController);
 }
 

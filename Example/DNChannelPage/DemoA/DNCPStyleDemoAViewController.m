@@ -58,6 +58,10 @@
     
 }
 
+- (BOOL)shouldAutomaticallyForwardAppearanceMethods {
+    return NO;
+}
+
 #pragma mark - DNCPChannelPageViewDataSource
 - (NSArray *)itemsInChannelPageView:(DNCPChannelPageView *)channelPageView {
     return self.pages;

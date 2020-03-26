@@ -18,6 +18,7 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
 
 @property (nonatomic, strong) NSMutableDictionary *pageChildViewControllerDictionary;
 @property (nonatomic, getter=isMultipleLoadPageChildViewController) BOOL multipleLoadPageChildViewController;
+@property (nonatomic, getter=isNeedManageLifeCycle) BOOL needManageLifeCycle;
 
 /// 禁止触摸调整位置，通常在点击标题或通过外界设置PageViewIndex时置为YES以禁用触摸位置调整
 @property (nonatomic, getter=isForbidTouchToAdjustPosition) BOOL forbidTouchToAdjustPosition;
@@ -40,6 +41,7 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
     if (self) {
         self.dataSource = dataSource;
         [self addSubview:self.pageCollectionView];
+        
         [self createObserver];
     }
     return self;
@@ -195,6 +197,7 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
     [self processWillDisplayCell:cell forItemAtIndexPath:indexPath];
 }
 
+
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     [self processDidEndDisplayingCell:cell forItemAtIndexPath:indexPath];
 }
@@ -237,10 +240,14 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
     [cell.contentView addSubview:self.currentPageChildViewController.view];
     [self.currentPageChildViewController didMoveToParentViewController:self.parentViewController];
     
-    if (self.isMultipleLoadPageChildViewController) {// TODO 处理首次加载控制器的生命周期方法
+    if (self.isMultipleLoadPageChildViewController) {//处理首次加载控制器的生命周期方法
         self.multipleLoadPageChildViewController = YES;
         [self processFirstLoadViewController];
+    } else {//处理后续加载控制器的生命周期方法
+        [self processPageChildViewControllerViewWillAppear:indexPath.row];
+           [self processPageChildViewControllerViewDidAppear:indexPath.row];
     }
+   
 }
 
 - (void)processFirstLoadViewController {
@@ -250,19 +257,66 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
 - (void)processDidEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     // 该方法主要用于生命周期管理
     if (self.currentIndex == indexPath.row) {// 没有滚动完成
-        
+
+        [self processPageChildViewControllerViewDidAppear:self.currentIndex];
+        [self processPageChildViewControllerViewDidDisAppear:indexPath.row];
     } else {
         if (self.previousIndex == indexPath.row) {// 滚动完成
-            
+
+            [self processPageChildViewControllerViewWillDisAppear:self.previousIndex];
+            [self processPageChildViewControllerViewDidDisAppear:self.previousIndex];
         } else { // 滚动没有完成又快速反向打开另一页
-            
+
+            [self processPageChildViewControllerViewDidAppear:self.currentIndex];
+            [self processPageChildViewControllerViewDidDisAppear:indexPath.row];
         }
+    }
+}
+
+- (void)processPageChildViewControllerViewWillAppear:(NSInteger)index {
+     UIViewController<DNCPPageChildViewControllerDelegate> *pageChildViewController = [self.dataSource pageView:self childViewControllerForRowAtIndex:index];
+    if (pageChildViewController == NO) {
+        return;
+    }
+    if (self.needManageLifeCycle) {
+        [pageChildViewController beginAppearanceTransition:YES animated:NO];
+    }
+}
+
+- (void)processPageChildViewControllerViewDidAppear:(NSInteger)index {
+    UIViewController<DNCPPageChildViewControllerDelegate> *pageChildViewController = [self.dataSource pageView:self childViewControllerForRowAtIndex:index];
+   if (pageChildViewController == NO) {
+        return;
+    }
+    if (self.needManageLifeCycle) {
+        [pageChildViewController endAppearanceTransition];
+    }
+}
+
+- (void)processPageChildViewControllerViewWillDisAppear:(NSInteger)index {
+    UIViewController<DNCPPageChildViewControllerDelegate> *pageChildViewController = [self.dataSource pageView:self childViewControllerForRowAtIndex:index];
+    if (pageChildViewController == NO) {
+        return;
+    }
+    if (self.needManageLifeCycle) {
+        [pageChildViewController beginAppearanceTransition:NO animated:NO];
+    }
+}
+
+- (void)processPageChildViewControllerViewDidDisAppear:(NSInteger)index {
+    UIViewController<DNCPPageChildViewControllerDelegate> *pageChildViewController = [self.dataSource pageView:self childViewControllerForRowAtIndex:index];
+    if (pageChildViewController == NO) {
+        return;
+    }
+    if (self.needManageLifeCycle) {
+        [pageChildViewController endAppearanceTransition];
     }
 }
 
 #pragma mark - LazyLoad Methods
 - (void)setParentViewController:(UIViewController *)parentViewController {
     _parentViewController = parentViewController;
+    self.needManageLifeCycle = ![parentViewController shouldAutomaticallyForwardAppearanceMethods];
     UINavigationController *navi = (UINavigationController *)self.parentViewController.parentViewController;
     
     if ([navi isKindOfClass:[UINavigationController class]]) {

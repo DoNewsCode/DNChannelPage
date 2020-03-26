@@ -161,7 +161,7 @@
 #pragma mark - Process Methods
 - (void)adjustUIWhenBtttonClickWithAnimate:(BOOL)animated taped:(BOOL)taped
 {
-    if (self.currentIndex == self.previousIndex && taped) return;
+//    if (self.currentIndex == self.previousIndex && taped) return;
     NSInteger oldIndex = self.previousIndex;
     NSInteger currentIndex = self.currentIndex;
     DNCPStyleDemoAChannelItemView *oldChannelView = self.channelViews[oldIndex];
