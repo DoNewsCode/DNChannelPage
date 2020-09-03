@@ -109,7 +109,12 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
 }
 
 - (__kindof UIViewController<DNCPPageChildViewControllerDelegate> *)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index {
-    return [self.pageChildViewControllerDictionary valueForKey:[NSString stringWithFormat:@"%ld",(long)index]];
+    
+    UIViewController<DNCPPageChildViewControllerDelegate> *vc = [self.dataSource pageView:self childViewControllerForRowAtIndex:index];
+    if (vc) {
+        return vc;
+    }
+    return nil;
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -222,10 +227,13 @@ static NSString *cellIdentifier = @"DNCPPageViewCell";
         
     }
     self.currentPageChildViewController = currentPageChildViewController;
-    if (self.currentPageChildViewController != [self.pageChildViewControllerDictionary valueForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]) {
-        [self.pageChildViewControllerDictionary setValue:self.currentPageChildViewController forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
-        
-    }
+    
+    // 去除控制器的存储,否则会导致无法释放
+    
+//    if (self.currentPageChildViewController != [self.pageChildViewControllerDictionary valueForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]) {
+//        [self.pageChildViewControllerDictionary setValue:self.currentPageChildViewController forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+//
+//    }
     if ([self.parentViewController.childViewControllers containsObject:self.currentPageChildViewController] == NO) {
         [self.parentViewController addChildViewController:self.currentPageChildViewController];
         self.currentPageChildViewController.view.frame = self.bounds;

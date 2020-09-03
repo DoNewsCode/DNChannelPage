@@ -56,7 +56,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGPoint previousContentOffset;
 
 @property (nonatomic, weak) UIViewController *parentViewController;
-@property (nonatomic, strong) UIViewController<DNCPPageChildViewControllerDelegate> *__nullable currentPageChildViewController;
+// 此处需使用weak 否则导致外部控制器无法释放
+@property (nonatomic, weak) UIViewController<DNCPPageChildViewControllerDelegate> *__nullable currentPageChildViewController;
 
 - (instancetype)initWithFrame:(CGRect)frame dataSource:(id<DNCPPageViewDataSource>)dataSource;
 
