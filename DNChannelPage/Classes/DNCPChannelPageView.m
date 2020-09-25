@@ -71,8 +71,9 @@
 }
 
 - (__kindof UIViewController<DNCPPageChildViewControllerDelegate> *)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index {
-    if (self.pageView) {
-        return [self.pageView dequeueReusableCellWithReuseIdentifier:identifier forIndex:index];
+    if (self.pageView && self.parentViewController.childViewControllers.count > index) {
+        return self.parentViewController.childViewControllers[index];
+
     }
     return nil;
 }
